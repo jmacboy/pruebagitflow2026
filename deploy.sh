@@ -1,5 +1,7 @@
 #!/bin/bash
 hostname=$(curl http://169.254.169.254/metadata/v1/hostname)
+mkdir -p /home/deploy
+cd /home/deploy
 echo "services:
   postgres:
     image: postgres:16
@@ -26,4 +28,4 @@ echo "services:
 volumes:
   postgres_data:
 " > compose.yml
-docker-compose up -d
+docker compose up -d
